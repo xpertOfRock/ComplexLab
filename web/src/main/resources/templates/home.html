@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments/layout :: head('ComplexLab')}"></head>
+
+<body>
+<div class="container">
+    <div th:replace="~{fragments/layout :: nav}"></div>
+
+    <div class="grid">
+        <div class="actions" sec:authorize="hasRole('ADMIN')">
+            <a class="btn" th:href="@{/books/new}">Create book</a>
+        </div>
+
+        <div class="card">
+            <h2 style="margin-top:0;">Books</h2>
+
+            <div class="list" th:if="${#lists.isEmpty(books)}">
+                <p class="muted">No books yet.</p>
+            </div>
+
+            <div class="list" th:if="${!#lists.isEmpty(books)}">
+                <div class="card" th:each="b : ${books}">
+                    <div class="actions" style="justify-content:space-between;">
+                        <div>
+                            <div>
+                                <strong th:text="${b.title}">Title</strong>
+                            </div>
+                            <div class="muted" th:text="${b.author}">
+                                Author
+                            </div>
+                        </div>
+
+                        <a class="btn secondary"
+                           th:href="@{'/books/' + ${b.id}}">
+                            Open
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

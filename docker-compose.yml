@@ -1,0 +1,45 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: complexlab-postgres
+    environment:
+      POSTGRES_DB: complexlab
+      POSTGRES_USER: complexlab_user
+      POSTGRES_PASSWORD: complexlab_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - complexlab-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U complexlab_user -d complexlab"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+    container_name: complexlab-web
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    networks:
+      - complexlab-net
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/complexlab
+      SPRING_DATASOURCE_USERNAME: complexlab_user
+      SPRING_DATASOURCE_PASSWORD: complexlab_pass
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_FLYWAY_ENABLED: "true"
+      SPRING_FLYWAY_BASELINE_ON_MIGRATE: "true"
+
+networks:
+  complexlab-net:
+
+volumes:
+  pgdata:

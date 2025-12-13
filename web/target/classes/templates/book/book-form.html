@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head('Book')"></head>
+<body>
+<div class="container">
+    <div th:replace="fragments/layout :: nav"></div>
+
+    <div class="card" style="max-width:720px;">
+        <h2 style="margin-top:0;">Create book</h2>
+
+        <form th:action="@{/books}" method="post" class="grid">
+            <div>
+                <label>Title</label>
+                <input class="input" name="title" required/>
+            </div>
+
+            <div>
+                <label>Author</label>
+                <input class="input" name="author"/>
+            </div>
+
+            <div>
+                <label>Description</label>
+                <textarea class="input" name="description"></textarea>
+            </div>
+
+            <div class="actions">
+                <button class="btn" type="submit">Save</button>
+                <a class="btn secondary" th:href="@{/}">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

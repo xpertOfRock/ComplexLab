@@ -1,0 +1,10 @@
+com\example\complexlab\core\dto\RegisterRequest.class
+com\example\complexlab\core\model\Role.class
+com\example\complexlab\core\dto\BookDto.class
+com\example\complexlab\core\model\Comment.class
+com\example\complexlab\core\model\AppUser.class
+com\example\complexlab\core\service\CommentService.class
+com\example\complexlab\core\dto\CommentDto.class
+com\example\complexlab\core\service\BookService.class
+com\example\complexlab\core\service\UserService.class
+com\example\complexlab\core\model\Book.class

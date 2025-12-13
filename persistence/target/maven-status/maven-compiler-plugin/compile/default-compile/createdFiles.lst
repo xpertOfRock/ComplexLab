@@ -1,0 +1,6 @@
+com\example\complexlab\persistence\service\UserServiceImpl.class
+com\example\complexlab\persistence\repository\UserRepository.class
+com\example\complexlab\persistence\repository\BookRepository.class
+com\example\complexlab\persistence\repository\CommentRepository.class
+com\example\complexlab\persistence\service\BookServiceImpl.class
+com\example\complexlab\persistence\service\CommentServiceImpl.class

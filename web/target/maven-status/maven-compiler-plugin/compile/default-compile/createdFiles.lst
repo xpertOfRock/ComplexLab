@@ -1,0 +1,12 @@
+com\example\complexlab\web\api\BookApiController.class
+com\example\complexlab\web\ComplexLabApplication.class
+com\example\complexlab\web\security\SecurityConfig.class
+com\example\complexlab\web\controller\BookForm.class
+com\example\complexlab\web\controller\AuthController.class
+com\example\complexlab\web\controller\AdminBookController.class
+com\example\complexlab\web\controller\HomeController.class
+com\example\complexlab\web\controller\BookController.class
+com\example\complexlab\web\api\CommentApiController.class
+com\example\complexlab\web\api\ApiExceptionHandler.class
+com\example\complexlab\web\bootstrap\AdminUserInitializer.class
+com\example\complexlab\web\security\DatabaseUserDetailsService.class
