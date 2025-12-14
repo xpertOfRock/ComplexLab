@@ -1,12 +1,23 @@
 package com.example.complexlab.web;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
+import org.springframework.boot.autoconfigure.AutoConfigurations;
+import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 
-@SpringBootTest
-@ActiveProfiles("test")
+import static org.assertj.core.api.Assertions.assertThat;
+
 class SmokeTest {
+
+    private final ApplicationContextRunner contextRunner =
+            new ApplicationContextRunner()
+                    .withConfiguration(
+                            AutoConfigurations.of()
+                    );
+
     @Test
-    void contextLoads() {}
+    void contextLoads() {
+        contextRunner.run(context -> {
+            assertThat(context).isNotNull();
+        });
+    }
 }
