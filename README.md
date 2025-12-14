@@ -1,6 +1,6 @@
 # ComplexLab
 
-Multi-module Maven project for deploying a Spring Boot web application with PostgreSQL, Flyway, Docker, and Render.
+Multi-module Maven project for deploying a Spring Boot web application with PostgreSQL, Flyway, Docker, and Render. Done by Max Sheludchenko
 
 ## Modules
 
