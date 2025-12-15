@@ -17,24 +17,29 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests(registry -> registry
-                        .requestMatchers("/", "/auth/**", "/css/**", "/js/**", "/images/**", "/actuator/health").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/books/**", "/api/**").permitAll()
-                        .requestMatchers("/error").permitAll()
-                        .anyRequest().authenticated()
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .anyRequest().authenticated()
-                )
-                .formLogin(form -> form
-                        .loginPage("/auth/login")
-                        .defaultSuccessUrl("/", true)
-                        .permitAll()
-                )
-                .logout(logout -> logout
-                        .logoutUrl("/auth/logout")
-                        .logoutSuccessUrl("/")
-                )
-                .httpBasic(Customizer.withDefaults());
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers(
+                    "/",
+                    "/error",
+                    "/css/**",
+                    "/js/**",
+                    "/images/**",
+                    "/auth/**",
+                    "/books/**"
+                ).permitAll()
+
+                .requestMatchers("/admin/**").hasRole("ADMIN")
+
+                .anyRequest().authenticated()
+            )
+            .formLogin(form -> form
+                .loginPage("/auth/login")
+                .defaultSuccessUrl("/", true)
+                .permitAll()
+            )
+            .logout(logout -> logout
+                .logoutSuccessUrl("/")
+            );
 
         return http.build();
     }
