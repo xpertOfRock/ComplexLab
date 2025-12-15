@@ -39,12 +39,19 @@
         </a>
 
         <form th:if="${#authentication != null and #authentication.authenticated}"
-              th:action="@{/logout}"
-              method="post">
+            th:action="@{/logout}"
+            method="post">
+            <div th:replace="fragments/layout :: csrf"></div>
             <button class="btn secondary" type="submit">Logout</button>
         </form>
     </div>
 </div>
+</div>
+<div th:fragment="csrf">
+    <input type="hidden"
+           th:if="${_csrf != null}"
+           th:name="${_csrf.parameterName}"
+           th:value="${_csrf.token}" />
 </div>
 </body>
 </html>
